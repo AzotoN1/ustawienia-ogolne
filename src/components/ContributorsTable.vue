@@ -1,10 +1,10 @@
 <template>
-  <Card>
+  <Card class="test-border">
     <template #content>
     <div class="flex justify-between items-center mb-4 flex-wrap gap-4">
       <div class="flex items-center gap-2">
-        <h2 class="text-lg font-semibold">Współtwórcy strony</h2>
-        <i class="pi pi-info-circle text-gray-400"
+        <h2 class="text-base font-semibold">Współtwórcy strony</h2>
+        <i class="pi pi-info-circle text-gray-400 test-border"
           v-tooltip.top="'Tutaj znajdziesz listę wszystkich współtwórców'"
         />
       </div>
@@ -12,25 +12,23 @@
         icon="pi pi-plus-circle" 
         label="Dodaj współtwórcę" 
         severity="success"
-        class="whitespace-nowrap" 
+        size="medium"
+        class="whitespace-nowrap test-bg" 
       />
     </div>
     
-    <DataTable :value="contributors" stripedRows class="p-datatable-sm" responsiveLayout="stack" breakpoint="960px" :pt="{
+    <DataTable :value="contributors" stripedRows class="p-datatable-sm test-border" responsiveLayout="stack" breakpoint="960px" :pt="{
         column: {
           headerCell: {
-            class: ['text-white !bg-gray-200 !py-3'],
+            class: ['text-white !bg-gray-100 !py-3 text-xs !border-solid !border-gray-200 !border-x-0'],
           },
         },
-        wrapper: {
-          class: ['overflow-x-auto']
-        }
       }">
       <Column field="email" header="E-mail">
         <template #body="slotProps">
-          <div class="text-blue-500">
+          <div class="text-blue-500 text-sm">
             {{ slotProps.data.email }}
-            <span v-if="slotProps.data.isOwner" class="ml-2 text-gray-600">(Właściciel)</span>
+            <span v-if="slotProps.data.isOwner" class="ml-2 text-sm text-gray-600">(Właściciel)</span>
           </div>
         </template>
       </Column>
@@ -40,21 +38,22 @@
           <Tag 
             :severity="slotProps.data.status === 'active' ? 'success' : 'warn'"
             :value="slotProps.data.status === 'active' ? 'Aktywny' : 'Oczekujący'"
-            class="px-4 py-1 rounded-full"
           />
         </template>
       </Column>
       
-      <Column header="Akcja" style="width: 4rem">
+      <Column header="Akcja" class="w-6 !text-right">
         <template #body="slotProps">
           <div class="text-right">
-            <Menu ref="rowMenu" :model="actionMenuItems" :popup="true" />
+            <Menu class="test-bg" ref="rowMenu" :model="actionMenuItems" :popup="true" />
             <Button 
               icon="pi pi-ellipsis-h" 
               text 
+              size="medium"
               rounded 
               severity="secondary" 
               @click="(event) => openRowMenu(event, slotProps.data)" 
+              class="test-bg"
             />
           </div>
         </template>

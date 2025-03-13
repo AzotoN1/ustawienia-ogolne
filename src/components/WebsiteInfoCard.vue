@@ -1,5 +1,5 @@
 <template>
-  <Card class="mb-4">
+  <Card class="mb-4 test-border">
     <template #content>
       <div class="flex flex-col lg:flex-row">
         <div class="mb-4 lg:mb-0 lg:mr-4">
@@ -7,11 +7,11 @@
         </div>
         <div class="flex-1">
           <div class="flex flex-row justify-between items-start gap-2 sm:gap-0 mb-4 sm:mb-0">
-            <h2 class="text-xl font-semibold">{{ website.name }}</h2>
+            <h2 class="text-base font-semibold">{{ website.name }}</h2>
             <div class="flex gap-2">
-              <Button :icon="{'pi pi-heart': isFavorite, 'pi pi-heart-fill': !isFavorite}" text rounded severity="secondary" @click="toggleFavorite" />
-              <Menu ref="menu" :model="menuItems" :popup="true" />
-              <Button icon="pi pi-ellipsis-h" text rounded severity="secondary" @click="toggleMenu" />
+              <Button size="medium" :icon="{'pi pi-heart': isFavorite, 'pi pi-heart-fill': !isFavorite}" text rounded severity="secondary" @click="toggleFavorite" class="test-bg" />
+              <Menu ref="menu" :model="menuItems" :popup="true" class="test-bg" />
+              <Button size="medium" icon="pi pi-ellipsis-h" text rounded severity="secondary" @click="toggleMenu" class="test-bg" />
             </div>
           </div>
           
@@ -20,31 +20,31 @@
             <div>Data ostatniej modyfikacji: {{ formatDate(website.lastModifiedDate) }}</div>
           </div>
           
-          <Divider />
+          <Divider class="test-border" />
           
           <div class="flex flex-col gap-1">
             <div class="flex flex-row sm:items-center gap-2">
               <div class="flex items-center gap-2">
-                <i class="pi pi-id-card text-gray-600"></i>
-                <span>Plan Pro</span>
+                <i class="pi pi-id-card text-gray-600 test-border"></i>
+                <span class="text-sm font-medium">Plan Pro</span>
               </div>
-              <Button label="Zmień Plan" link class="!p-0 !text-blue-500 underline" />
+              <Button label="Zmień Plan" link class="!p-0 !text-blue-500 underline test-bg !text-sm" />
             </div>
             
             <div class="flex flex-row sm:items-center gap-2">
               <div class="flex items-center gap-2">
-                <i class="pi pi-globe text-gray-600"></i>
-                <span>{{ website.domain }}</span>
+                <i class="pi pi-globe text-gray-600 test-border"></i>
+                <span class="text-sm font-medium">{{ website.domain }}</span>
               </div>
-              <Button label="Zmień adres" link class="!p-0 !text-blue-500 underline" />
+              <Button label="Zmień adres" link class="!p-0 !text-blue-500 underline test-bg !text-sm" />
             </div>
             
             <div class="flex flex-row sm:items-center gap-2">
               <div class="flex items-center gap-2">
-                <i class="pi pi-envelope text-gray-600"></i>
-                <span>Ilość skrzynek pocztowych: {{ website.emailBoxes }}</span>
+                <i class="pi pi-envelope text-gray-600 test-border"></i>
+                <span class="text-sm font-medium">Ilość skrzynek pocztowych: {{ website.emailBoxes }}</span>
               </div>
-              <Button label="Zarządzaj skrzynkami" link class="!p-0 !text-blue-500 underline" />
+              <Button label="Zarządzaj skrzynkami" link class="!p-0 !text-blue-500 underline test-bg !text-sm" />
             </div>
           </div>
         </div>
